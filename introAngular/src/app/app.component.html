@@ -1,0 +1,28 @@
+<app-header-menu></app-header-menu>
+<div class="container">
+
+  <h1>{{ title }}</h1>
+  <p>Kullanıcı adı: {{ user }}</p>
+  <input type="checkbox" name="" id="" [(ngModel)]="isChecked">
+  <p [ngClass]="isChecked ? 'yesil':'kirmizi'">{{isChecked ? "Seçili":"Seçim kaldırıldı"}}</p>
+  <select class="form-control">
+    <option *ngFor="let sehir of sehirler">{{sehir}}</option>
+  </select>
+
+  <div>
+    <input type="text" #filmName name="" placeholder="Film Adı" id="" class="form-control">
+    <button class="btn btn-danger" (click)="addNew(filmName.value)">Ekle</button>
+  </div>
+
+
+  <button class="btn btn-success" (click)="filter()" >{{ getButtonText() }}</button>
+
+  <div *ngFor="let film of filmler">
+    <div>   
+      <input type="checkbox" class="form-check-input"  [(ngModel)]="film.izlendiMi" name="" id="">   {{film.filmAdi}}
+      <span [ngClass]="film.izlendiMi ? 'bg-warning':'bg-dark'" class="badge rounded-pill">{{film.izlendiMi ? "izledim":"listemde"}}</span>
+    </div>
+    <hr>
+  </div>
+</div>
+<app-header-menu></app-header-menu>
